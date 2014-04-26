@@ -1,0 +1,4 @@
+/venv/
+/pastes/*
+!/pastes/.gitkeep
+__pycache__

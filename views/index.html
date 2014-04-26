@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %} New paste {% endblock %}
+
+{% block content %}
+    <form action="/" method="post">
+        <div class="row">
+            <div class="large-6 columns">
+                <label>Your name <input type="text" placeholder="Your name" name="author" /> </label>
+            </div>
+            <div class="large-6 columns">
+                <label>Optional password <input type="password" placeholder="Password (optional)" name="password" /> </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>Paste content <textarea name="content" rows="20"></textarea> </label>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="button success radius" style="margin-top: 0.3rem;">Create now the paste!</button>
+        </div>
+    </form>
+{% endblock %}

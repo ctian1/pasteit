@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %} Paste by {{ paste.author }} {% endblock %}
+
+{% block toolbar %}
+    <a href="/raw/{{ paste.id }}" class="button radius small right">Download raw</a>
+{% endblock %}
+
+{% block content %}
+    <hr>
+    <pre>{{ paste.content }}</pre>
+    <hr>
+{% endblock %}
