@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+    <p class="text-center">Paste created by <b>{{ paste.author }}</b> on {{ paste.createdAt(True) }}</p>
     <hr>
     <pre>{{ paste.content }}</pre>
     <hr>

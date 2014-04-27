@@ -5,6 +5,7 @@ import random
 import string
 import re
 import hashlib
+import time
 
 class PastesRepo:
     """ A repository for all the registerted pastes """
@@ -105,6 +106,14 @@ class Paste:
     def delete(self):
         """ Delete the paste """
         os.remove('pastes/'+self.id)
+
+    def createdAt(self, formatted=False):
+        """ Get the creation date """
+        at = os.path.getmtime('pastes/'+self.id)
+        if formatted:
+            return time.strftime("%d/%m/%Y at %H:%M:%S", time.gmtime(at))
+        else:
+            return at
 
     def __str__(self):
         return self.content
