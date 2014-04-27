@@ -73,6 +73,13 @@ class PasteIt:
                     except ValueError as e:
                         result['error'] = str(e)
                     else:
+                        # If a password was set, automatically allow you to see the paste
+                        if password:
+                            # Boot the password_pastes key
+                            if 'password_pastes' not in cherrypy.session:
+                                cherrypy.session['password_pastes'] = []
+                            # Append the id to allowed pastes
+                            cherrypy.session['password_pastes'].append(id)
                         raise cherrypy.HTTPRedirect('/'+id)
                 return result
 
