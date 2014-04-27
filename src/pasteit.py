@@ -25,6 +25,8 @@ pastes_repo = repo.PastesRepo()
 class PasteIt:
     """ Root of PasteIt """
 
+    favicon_ico = None # Disable favicon
+
     @cherrypy.expose
     @tools.template('see.html')
     def default(self, id):
