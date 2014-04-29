@@ -7,8 +7,11 @@
 {% endblock %}
 
 {% block content %}
-    <p class="text-center">Paste created by <b>{{ paste.author }}</b> on {{ paste.createdAt(True) }}</p>
+    <p class="text-center">
+        Paste created by <b>{{ paste.author }}</b> on {{ paste.createdAt(True) }}<br>
+        Double click on the content to select all.
+    </p>
     <hr>
-    <pre>{{ paste.formattedContent() }}</pre>
+    <pre id="paste-content">{{ paste.formattedContent() }}</pre>
     <hr>
 {% endblock %}
