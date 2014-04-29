@@ -6,6 +6,8 @@ import string
 import re
 import hashlib
 import time
+import pygments.lexers
+import tools
 
 class PastesRepo:
     """ A repository for all the registerted pastes """
@@ -21,7 +23,7 @@ class PastesRepo:
         for paste in pastes:
             self.pastes[paste[-10:]] = Paste(paste)
 
-    def create(self, author, content, password):
+    def create(self, author, content, password, language):
         """ Create a new paste """
         # Generate the paste identifier
         pattern = string.ascii_lowercase+string.ascii_uppercase+string.digits # Alphanumeric pattern
@@ -38,6 +40,7 @@ class PastesRepo:
         paste.id = id
         paste.author = author
         paste.content = content
+        paste.language = language
         if password:
             paste.password = hashlib.sha1(password.encode('utf-8')).hexdigest() # Hash with sha1
         else:
@@ -70,6 +73,7 @@ class Paste:
             self.author = None
             self.content = None
             self.password = None
+            self.language = None
         self.loaded = True
 
     def loadFromFile(self, filename):
@@ -92,6 +96,7 @@ class Paste:
                     self.password = False
                 else:
                     self.password = flags[2]
+                self.language = flags[3]
             else:
                 raise FileNotFoundError('Paste not found: '+filename)
         else:
@@ -99,7 +104,7 @@ class Paste:
 
     def save(self):
         """ Save the paste """
-        raw = 'pastes|'+self.author+'|'+(self.password if self.password else '!')+'\n'+self.content
+        raw = 'pastes|'+self.author+'|'+(self.password if self.password else '!')+'|'+self.language+'\n'+self.content
         with open('pastes/'+self.id, 'w') as f:
             f.write(raw)
 
@@ -115,8 +120,18 @@ class Paste:
         else:
             return at
 
+    def formattedContent(self):
+        """ Return the formatted paste content """
+        # Detect which lexer use
+        if self.language == "guess":
+            lexer = pygments.lexers.guess_lexer(self.content)
+        else:
+            lexer = pygments.lexers.get_lexer_by_name(self.language)
+        # Return the formatted output
+        return tools.highlight(self.content, lexer)
+
     def __str__(self):
-        return self.content
+        return self.formattedContent()
 
     def __repr__(self):
         return '<Paste \''+self.id+'\'>'

@@ -2,14 +2,86 @@
 
 {% block title %} New paste {% endblock %}
 
+{% block toolbar %}
+    <button type="submit" class="button success radius small right" form="create">Create now the paste!</button>
+{% endblock %}
+
 {% block content %}
-    <form action="/" method="post">
+    <form action="/" method="post" id="create">
         <div class="row">
             <div class="large-6 columns">
                 <label>Your name <input type="text" placeholder="Your name" name="author" /> </label>
             </div>
             <div class="large-6 columns">
-                <label>Optional password <input type="password" placeholder="Password (optional)" name="password" /> </label>
+                <label>Language used <select name="language">
+                    <option value="text" selected>Plain text</option>
+                    <option value="guess">Automatic</option>
+                    <option disabled></option>
+                    <optgroup label="Python">
+                        <option value="py">Python 2</option>
+                        <option value="py3">Python 3</option>
+                        <option value="pycon">Python console</option>
+                        <option value="pytb">Python 2 traceback</option>
+                        <option value="py3tb">Python 3 traceback</option>
+                    </optgroup>
+                    <option disabled></option>
+                    <optgroup label="Web pages">
+                        <option value="html">HTML page</option>
+                        <option value="css">CSS stylesheet</option>
+                        <option value="js">Javascript script</option>
+                        <option value="php">PHP script</option>
+                    </optgroup>
+                    <option disabled></option>
+                    <optgroup label="Scripting">
+                        <option value="sh">Bash</option>
+                        <option value="rb">Ruby</option>
+                        <option value="rbcon">Ruby console</option>
+                        <option value="lua">Lua</option>
+                    </optgroup>
+                    <option disabled></option>
+                    <optgroup label="Web servers">
+                        <option value="apache">Apache configuration</option>
+                        <option value="nginx">nginx configuration</option>
+                        <option value="lighttpd">Lighttpd configuration</option>
+                    </optgroup>
+                    <option disabled></option>
+                    <optgroup label="Databases">
+                        <option value="sql">Generic SQL query</option>
+                        <option value="mysql">MySQL query</option>
+                        <option value="psql">PostgreSQL query</option>
+                    </optgroup>
+                    <option disabled></option>
+                    <optgroup label="Markup">
+                        <option value="json">JSON file</option>
+                        <option value="yaml">YAML file</option>
+                        <option value="xml">XML file</option>
+                        <option value="ini">INI file</option>
+                    </optgroup>
+                    <option disabled></option>
+                    <optgroup label="Template engines">
+                        <option value="jinja">Django/Jinja2 template</option>
+                        <option value="mako">Mako template</option>
+                        <option value="genshi">Genshi template</option>
+                        <option value="smarty">Smarty template</option>
+                    </optgroup>
+                    <option disabled></option>
+                    <optgroup label="Other languages">
+                        <option value="c">C</option>
+                        <option value="c++">C++</option>
+                        <option value="objc">Objective C</option>
+                        <option value="objc++">Objective C++</option>
+                        <option value="c#">C#</option>
+                        <option value="vbnet">Visual Basic .net</option>
+                        <option value="vala">Vala</option>
+                        <option value="go">Go</option>
+                    </optgroup>
+                    <option disabled></option>
+                    <optgroup label="Other files">
+                        <option value="bbcode">BBCode</option>
+                        <option value="moin">Moin page</option>
+                        <option value="irc">IRC log</option>
+                    </optgroup>
+                </select></label>
             </div>
         </div>
         <div class="row">
@@ -17,8 +89,13 @@
                 <label>Paste content <textarea name="content" rows="20"></textarea> </label>
             </div>
         </div>
+        <div class="row">
+            <div class="large-6 columns">
+                <label>Optional password <input type="password" placeholder="Password (optional)" name="password" /> </label>
+            </div>
+        </div>
         <div class="text-center">
-            <button type="submit" class="button success radius" style="margin-top: 0.3rem;">Create now the paste!</button>
+
         </div>
     </form>
 {% endblock %}

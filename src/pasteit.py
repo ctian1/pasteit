@@ -19,6 +19,7 @@ import cherrypy
 import hashlib
 import tools
 import repo
+import json
 
 pastes_repo = repo.PastesRepo()
 
@@ -51,14 +52,19 @@ class PasteIt:
 
     @cherrypy.expose
     @tools.template('index.html')
-    def index(self, author=None, content=None, password=None):
+    def index(self, author=None, content=None, password=None, language=None):
         # If he hasn't inserted the password redirect him to the login form
         if cherrypy.tree.apps[''].config['pasteit']['password'] and 'password_inserted' not in cherrypy.session:
             raise cherrypy.HTTPRedirect('/password')
         else:
+            print(language)
+            result = {}
+            result['error'] = None
+            # Obtain the languages list
+            with open('languages.json', 'r') as f:
+                result['languages'] = json.load(f)
             # If the method is POST, suppose that the user want to save the paste
             if cherrypy.request.method == 'POST':
-                result = {'error': None}
                 # Author and content are required!
                 if not author or not content:
                     result['error'] = 'Something is missing'
@@ -69,7 +75,7 @@ class PasteIt:
                     # Try to create the paste
                     # If it was create, go to it
                     try:
-                        id = pastes_repo.create(author, content, password)
+                        id = pastes_repo.create(author, content, password, language)
                     except ValueError as e:
                         result['error'] = str(e)
                     else:
@@ -81,7 +87,7 @@ class PasteIt:
                             # Append the id to allowed pastes
                             cherrypy.session['password_pastes'].append(id)
                         raise cherrypy.HTTPRedirect('/'+id)
-                return result
+            return result
 
     @cherrypy.expose
     def raw(self, id):
