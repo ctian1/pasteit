@@ -57,7 +57,6 @@ class PasteIt:
         if cherrypy.tree.apps[''].config['pasteit']['password'] and 'password_inserted' not in cherrypy.session:
             raise cherrypy.HTTPRedirect('/password')
         else:
-            print(language)
             result = {}
             result['error'] = None
             # Obtain the languages list
