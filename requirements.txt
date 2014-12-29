@@ -1,0 +1,5 @@
+cherrypy==3.6.0
+jinja2==2.7.3
+pygments==2.0.1
+psycopg2==2.5.4
+PyYAML==3.11

@@ -1,0 +1,6 @@
+database:
+  host: blah.blah.example.com
+  name: "database"
+  port: 5432
+  user: "username"
+  pass: "password"

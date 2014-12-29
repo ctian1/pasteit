@@ -3,7 +3,7 @@
 {% block title %} New paste {% endblock %}
 
 {% block toolbar %}
-    <button type="submit" class="button success radius small right" form="create">Create now the paste!</button>
+    <button type="submit" class="button success radius small right" form="create">Create paste!</button>
 {% endblock %}
 
 {% block content %}
@@ -14,12 +14,12 @@
             </div>
             <div class="large-6 columns">
                 <label>Language used <select name="language">
-                    <option value="text" selected>Plain text</option>
+                    <option value="text">Plain text</option>
                     <option value="guess">Automatic</option>
                     <option disabled></option>
                     <optgroup label="Python">
                         <option value="py">Python 2</option>
-                        <option value="py3">Python 3</option>
+                        <option value="py3" selected>Python 3</option>
                         <option value="pycon">Python console</option>
                         <option value="pytb">Python 2 traceback</option>
                         <option value="py3tb">Python 3 traceback</option>
@@ -77,9 +77,9 @@
                     </optgroup>
                     <option disabled></option>
                     <optgroup label="Other files">
+                        <option value="irc">IRC log</option>
                         <option value="bbcode">BBCode</option>
                         <option value="moin">Moin page</option>
-                        <option value="irc">IRC log</option>
                     </optgroup>
                 </select></label>
             </div>
@@ -92,6 +92,14 @@
         <div class="row">
             <div class="large-6 columns">
                 <label>Optional password <input type="password" placeholder="Password (optional)" name="password" /> </label>
+            </div>
+            <div class="large-6 columns">
+                <label>Temporary paste 
+                    <div class="switch">
+                        <input id="temporary" type="checkbox" name="temporary" />
+                        <label for="temporary"></label>
+                    </div>
+                </label>
             </div>
         </div>
         <div class="text-center">

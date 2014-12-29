@@ -8,3 +8,15 @@ pre
     word-wrap: break-word;
     width: 100%;
 }
+
+#header
+{
+    color: black;
+}
+
+#header:hover, #header:focus, #header:active
+{
+    color: black;
+    text-decoration: underline;
+}
+

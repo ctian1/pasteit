@@ -3,12 +3,24 @@
 {% block title %} Paste by {{ paste.author }} {% endblock %}
 
 {% block toolbar %}
+    {% if password == True %}
+    <a href="/raw/{{ paste.id }}" class="button radius small right split">Download raw <span data-dropdown="drop"></span></a><br>
+        <ul id="drop" class="f-dropdown" data-dropdown-content="">
+          {% if temporary == True %}
+          <li><a href="/change/{{ paste.id }}"><i class="fi-page-filled"></i> Change to permanent</a></li>
+          {% else %}
+          <li><a href="/change/{{ paste.id }}"><i class="fi-page"></i> Change to temporary</a></li>
+          {% endif %}
+          <li><a href="/delete/{{ paste.id }}"><i class="fi-page-delete"></i> Delete paste</a></li>
+        </ul>
+    {% else %}
     <a href="/raw/{{ paste.id }}" class="button radius small right">Download raw</a>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
     <p class="text-center">
-        Paste created by <b>{{ paste.author }}</b> on {{ paste.createdAt(True) }}<br>
+        Paste created by <b>{{ paste.author }}</b> on {{ paste.createdAt() }}<br>
         Double click on the content to select all.
     </p>
     <hr>
