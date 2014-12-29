@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html lang="it">
+<html>
     <head>
         <title>{% block title %}{% endblock %} - {{ config['site_name'] }}</title>
         {% block styles %}
-        <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css" />
-        <link rel="stylesheet" type="text/css" href="/assets/css/foundation.min.css" />
-        <link rel="stylesheet" type="text/css" href="/assets/css/pastes.css" />
-        <link rel="stylesheet" type="text/css" href="/assets/css/highlight.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/foundation.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/pastes.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/highlight.css" />
+        <link rel="stylesheet" type="text/css" href="assets/font/foundation-icons.css" />
         {% endblock %}
         {% block scripts %}
-        <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
-        <script type="text/javascript" src="/assets/js/foundation.min.js"></script>
-        <script type="text/javascript" src="/assets/js/pasteit.js"></script>
+        <script type="text/javascript" src="assets/js/modernizr.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/fastclick.js"></script>
+        <script type="text/javascript" src="assets/js/foundation.min.js"></script>
+        <!-- <script type="text/javascript" src="assets/js/foundation.dropdown.js"></script> -->
+        <script type="text/javascript" src="assets/js/pasteit.js"></script>
         {% endblock %}
     </head>
     <body>
         <div class="container">
-            <div class="row">
+            <div class="row" style="margin-top: 20px;">
                 <div class="large-12 columns">
                     <div class="row">
                         <div class="large-8 columns">
-                            <h1>{{ config['site_name'] }} <small>{{ config['site_subtitle'] }}</small></h1>
+                            <h1><a href="/" id="header">{{ config['site_name'] }}</a> <small>{{ config['site_subtitle'] }}</small></h1>
                         </div>
                         <div class="large-4 columns">
                             <div class="clearfix" style="margin-top: 0.8rem;">
@@ -33,4 +37,7 @@
             </div>
         </div>
     </body>
+    <script>
+        $(document).foundation();
+    </script
 </html>
