@@ -2,6 +2,8 @@
 
 A simple Pastes application written in Python3 and CherryPy
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/PangeaCake/pasteit)
+
 ### Dependencies
 
  * Python >= 3.3 (during development was used Python 3.4)
