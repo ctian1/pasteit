@@ -1,0 +1,7 @@
+{
+  "name": "Pasteit personal pastebin",
+  "description": "A barebones pastebin made using cherrypy, jinja2, and pygments",
+  "repository": "https://github.com/PangeaCake/pasteit",
+  "logo": "https://avatars0.githubusercontent.com/u/1664819?v=3&s=460",
+  "keywords": ["pastebin", "python", "python3"]
+}
