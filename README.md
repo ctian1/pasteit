@@ -13,12 +13,12 @@ A simple Pastes application written in Python3 and CherryPy
  
  * PyYAML and psycopg2 if modifications
  
-### Normal installation
+### Normal installation (original repo)
  * Edit options in pasteit.conf (namely master password)
  * in pasteit.conf, add the absolute path to your directory
  * pip install -r requirements.txt
  
-### Modifications that this repo adds:
+### Modifications that this fork adds:
  * use postgres as database instead of saving pastes to file
  * add temporary/permanent paste type
  * add delete paste option for logged in user
