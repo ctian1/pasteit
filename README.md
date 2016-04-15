@@ -2,7 +2,7 @@
 
 A simple Pastes application written in Python3 and CherryPy
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/PangeaCake/pasteit)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/pangeacake/pasteit)
 
 ### Dependencies
 
